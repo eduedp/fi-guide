@@ -156,10 +156,10 @@ module.exports = function fi_guide(mod) {
 					{
 						sendMessage(ThirdBossActions[skill].msg);
 						if(skill = 110 && itemhelper) { // melee AoE
-							SpawnitemCircle(item, {x: 150, y: 150}, 200, 4000);
-				      SpawnitemCircle(item, {x: -150, y: 150}, 200, 4000);
-				      SpawnitemCircle(item, {x: 150, y: -150}, 200, 4000);
-				      SpawnitemCircle(item, {x: -150, y: -150}, 200, 4000);
+							SpawnitemCircle(553, {x: 150, y: 150}, 200, 4000);
+				      SpawnitemCircle(553, {x: -150, y: 150}, 200, 4000);
+				      SpawnitemCircle(553, {x: 150, y: -150}, 200, 4000);
+				      SpawnitemCircle(553, {x: -150, y: -150}, 200, 4000);
 						}
 					} /*else if (hardmode && (skill == 106 || skill == 107 || (skill == 108 && event.skill.id != 3108) || skill == 109)) { // targetted attacks, but 3108 is the curse
 						command.message(
