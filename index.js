@@ -72,7 +72,7 @@ module.exports = function fi_guide(mod) {
 			streamenabled = false;
 			sendToParty = !sendToParty;
 			command.message((sendToParty ? 'FI Guide - Messages will be sent to the party' : 'FI Guide - Only you will see messages in chat'));
-		}
+		},
 		stream() {
 				streamenabled = !streamenabled;
 				sendToParty = false;
