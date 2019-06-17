@@ -28,6 +28,7 @@ module.exports = function fi_guide(mod) {
 		hardmode = false,
 		bossCurLocation,
 		bossCurAngle,
+		npcs = new Map(),
 		uid0 = 999999999n,
 		sendToParty = false,
 		enabled = true,
@@ -142,6 +143,21 @@ module.exports = function fi_guide(mod) {
 		}
 	}
 
+	function SpawnitemCross(item, center, length, lifetime)
+	{
+		for (var i=1; i<length; i+=100)
+		{
+			Spawnitem(item, center, 0, i, lifetime);
+			Spawnitem(item, center, 90, i, lifetime);
+			Spawnitem(item, center, 180, i, lifetime);
+			Spawnitem(item, center, 270, i, lifetime);
+		}
+	}
+
+	function getNPCLoc(id) {
+		return npcs.get(id);
+	}
+
 	function load()
 	{
 		if(!hooks.length)
@@ -151,20 +167,23 @@ module.exports = function fi_guide(mod) {
 
 				if (event.templateId === 1003)
 				{
+					bossCurLocation = event.loc;
+					bossCurAngle = event.w;
 					let skill = event.skill.id % 1000;
 					if(ThirdBossActions[skill])
 					{
 						sendMessage(ThirdBossActions[skill].msg);
 						if(skill = 110 && itemhelper) { // melee AoE
-							SpawnitemCircle(553, {x: 150, y: 150}, 200, 4000);
-				      SpawnitemCircle(553, {x: -150, y: 150}, 200, 4000);
-				      SpawnitemCircle(553, {x: 150, y: -150}, 200, 4000);
-				      SpawnitemCircle(553, {x: -150, y: -150}, 200, 4000);
+							SpawnitemCircle(553, {x: 150, y: 150}, 10, 200, 4000);
+				      SpawnitemCircle(553, {x: -150, y: 150}, 10, 200, 4000);
+				      SpawnitemCircle(553, {x: 150, y: -150}, 10, 200, 4000);
+				      SpawnitemCircle(553, {x: -150, y: -150}, 10, 200, 4000);
 						}
 					} /*else if (hardmode && (skill == 106 || skill == 107 || (skill == 108 && event.skill.id != 3108) || skill == 109)) { // targetted attacks, but 3108 is the curse
 						command.message(
 							"target: " + event.target
 						);//debug, to find the ID of the pylons in HM
+						SpawnitemCross(537, getNPCLoc(event.target), 1000, 3000);
 					}*/
 				}
 				else if (event.templateId === 1004 || event.templateId === 1001)
@@ -184,6 +203,23 @@ module.exports = function fi_guide(mod) {
 					}
 				}
 			});
+			hook('S_SPAWN_NPC', 11, (event) => {
+				npcs.set(event.gameId, event.loc);
+				/*if(event.templateId >1000 && event.templateId <1006) {
+					bossCurLocation = event.loc;
+					bossCurAngle = event.w;
+				}*/
+			});
+			hook('S_DESPAWN_NPC', 3, (event) => {
+				npcs.delete(event.gameId);
+			});
+			hook('S_NPC_LOCATION', 3, (event) => {
+				npcs.set(event.gameId, event.loc);
+				/*if(event.templateId >1000 && event.templateId <1006) {
+					bossCurLocation = event.loc;
+					bossCurAngle = event.w;
+				}*/
+			});
 		}
 	}
 
@@ -195,6 +231,7 @@ module.exports = function fi_guide(mod) {
 
 			hooks = []
 		}
+		npcs.clear()
 	}
 
 	function hook()
