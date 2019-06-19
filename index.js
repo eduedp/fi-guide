@@ -173,7 +173,7 @@ module.exports = function fi_guide(mod) {
 					if(ThirdBossActions[skill])
 					{
 						sendMessage(ThirdBossActions[skill].msg);
-						if(skill = 110 && itemhelper) { // melee AoE
+						if(skill == 110 && itemhelper) { // melee AoE
 							SpawnitemCircle(553, {x: 150, y: 150}, 10, 200, 4000);
 				      SpawnitemCircle(553, {x: -150, y: 150}, 10, 200, 4000);
 				      SpawnitemCircle(553, {x: 150, y: -150}, 10, 200, 4000);

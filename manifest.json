@@ -1,15 +1,15 @@
 {
   "files": {
-    "index.js": "27deacfafa706f6a8222053384e64b8e8e897d0d7dd4c3d8ab3ee01490c12b1a",
+    "index.js": "21ae7926f1ea71c5837bdbcf05f2b533728a71fb2bd45c05fa0e593db623dc9e",
     "module.json": "6bf34378de9b9d1c353d70fc0e6d5bc392b3972439dc8c5e17669cace8a4eb13",
     "README.md": "7365e15633757414420f1361cd7ee5ff8990d46223215043da60ef4d130cc48d"
   },
-	"defs": {
-		"C_CHAT": 1,
-		"S_ACTION_STAGE": 9,
-		"S_CHAT": 1,
-		"S_DESPAWN_COLLECTION": 2,
-		"S_LOAD_TOPO": 3,
-		"S_SPAWN_COLLECTION": 4
-	}
+  "defs": {
+    "C_CHAT": 1,
+    "S_ACTION_STAGE": 9,
+    "S_CHAT": 1,
+    "S_DESPAWN_COLLECTION": 2,
+    "S_LOAD_TOPO": 3,
+    "S_SPAWN_COLLECTION": 4
+  }
 }
