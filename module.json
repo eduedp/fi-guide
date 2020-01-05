@@ -1,11 +1,10 @@
 {
-	"disableAutoUpdate": false,
-	"name": "FI-Guide",
-	"author": "Cybours",
-	"description": "Calls boss attacks in Forsaken Island",
-	"options": {
-		"niceName": "FI-Guide"
-	},
-	"servers": ["https://raw.githubusercontent.com/Cybours/fi-guide/master/"],
-	"supportUrl": "https://github.com/Cybours/fi-guide/issues"
+    "disableAutoUpdate": false,
+    "name": "FI-Guide",
+    "author": "edu / Cybours",
+    "description": "Calls boss attacks in Forsaken Island",
+    "options": {
+        "niceName": "FI-Guide"
+    },
+    "servers": ["https://raw.githubusercontent.com/eduedp/fi-guide/master/"]
 }
